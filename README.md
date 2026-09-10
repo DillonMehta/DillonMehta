@@ -1,6 +1,6 @@
 # 👋 Hi, I'm Dillon Mehta
 
-Incoming ECE Honors student at UT Austin, AI researcher, and robotics developer. I build autonomous systems, dive into multi-agent medical AI, and love solving complex engineering challenges.
+ECE Honors student at UT Austin, AI researcher, and robotics developer. I build autonomous systems, dive into multi-agent medical AI, and love solving complex engineering challenges.
 
 ---
 
