@@ -1,18 +1,24 @@
 # 👋 Hi, I'm Dillon Mehta
 
-ECE Honors student at UT Austin, AI researcher, and robotics developer. I build autonomous systems, dive into multi-agent medical AI, and love solving complex engineering challenges.
+I'm an Electrical & Computer Engineering Honors student at UT Austin and the co-founder and CEO of **CueBench (YC S26)**. I work on robotics, embedded systems, and AI evaluation.
 
----
+### What I'm Working On
 
-### 🚀 What I'm Up To
-* **🎓 UT Austin (ECE)**: Incoming student focusing on Electrical & Computer Engineering Honors.
-* **🤖 Robotics & Autonomous Systems**: 7-year VRC VEX Robotics competitor and SciOly veteran. Currently working on computer vision and object functionality inference for robotic systems.
-* **🧠 AI Research**: First-author researcher focusing on multi-agent medical AI systems and human-robot interaction (including work published at NeurIPS).
+- **CueBench:** Building reinforcement-learning environments for scientific reasoning and performance engineering, with deterministic verifiers that provide objective feedback.
+- **Robotics Research:** Studying object functionality and affordances for robotic systems with UT Austin’s Autonomous Systems Group.
+- **Medical AI:** Co-first author of research on bias and failure modes in multi-agent medical AI, presented at three NeurIPS 2025 workshops.
 
-### 🛠️ Tech Stack & Skills
-* **Languages**: C, C++, Java, Python, Swift, HTML/CSS
-* **Domains**: Autonomous Navigation, Computer Vision, Multi-Agent Systems, Machine Learning
+### Things I've Built
 
-### 📈 Find Me Around the Web
-* 📝 [LinkdIn](https://linkedin.com/in/dillon-mehta-49aa2827b/)
-* 🔬 [ORCID Profile](https://orcid.org/0000-0005-9183-0556)
+- **Autonomous maze-navigation robot:** Designed and assembled the electronics and mechanical hardware, and wrote C++ firmware for IMU/encoder feedback, motion profiling, and path correction. Placed second at the MIT Invitational and Texas State Tournament.
+- **VEX Robotics:** Designed climbing, motor-sharing, and odometry mechanisms. Co-founded a robotics program that grew to eight teams and more than 200 students, with a 2025 UIL Texas State Championship.
+
+### Tools & Interests
+
+- **Languages:** C, C++, Python, Java, C#, Swift, HTML/CSS
+- **Hardware & Design:** Fusion 360, Autodesk Inventor, EAGLE, Fritzing, PCB design, soldering, and 3D printing
+- **Interests:** Embedded systems, autonomous navigation, robot perception, multi-agent systems, and AI evaluation
+
+### Find Me
+
+[Email](mailto:dillonmehta@utexas.edu) · [LinkedIn](https://www.linkedin.com/in/dillon-mehta/) · [Google Scholar](https://scholar.google.com/citations?user=tNUbaMQAAAAJ&hl=en) · [ORCID](https://orcid.org/0000-0005-9183-0556)
