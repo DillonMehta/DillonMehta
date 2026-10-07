@@ -1,98 +1,103 @@
-const flipRobot = document.getElementById('flip-robot');
+const motors = document.getElementById('card-motors');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-let robotBusy = false;
-const armOpen = 'assets/industrial-arm.png';
-const armGrip = 'assets/industrial-arm-grip.png';
-for (const source of [armOpen, armGrip]) {
-  const preload = new Image();
-  preload.src = source;
-}
+let motorBusy = false;
 
-function pause(ms) {
-  return new Promise(resolve => window.setTimeout(resolve, ms));
-}
-
-async function drive(from, to, top, duration) {
-  flipRobot.style.display = 'block';
-  flipRobot.style.top = `${top}px`;
-  flipRobot.style.left = `${from}px`;
-  const animation = flipRobot.animate(
-    [{ left: `${from}px` }, { left: `${to}px` }],
-    { duration, easing: 'ease-in-out', fill: 'forwards' }
-  );
-  await animation.finished.catch(() => {});
-  animation.cancel();
-  flipRobot.style.left = `${to}px`;
+async function motion(element, frames, duration, animations) {
+  const animation = element.animate(frames, {
+    duration, easing: 'cubic-bezier(.45,0,.25,1)', fill: 'forwards',
+  });
+  animations.push(animation);
+  await animation.finished;
 }
 
 for (const card of document.querySelectorAll('[data-project]')) {
+  const inner = card.querySelector('.card-inner');
   const front = card.querySelector('.card-front');
   const back = card.querySelector('.card-back');
   const returnButton = card.querySelector('.card-return');
 
   async function flip(showBack) {
-    if (robotBusy) return;
-    robotBusy = true;
-    const scale = window.innerWidth < 700 ? .21 : .27;
+    if (motorBusy) return;
+    motorBusy = true;
+    const animations = [];
+    const cancel = () => animations.forEach(animation => animation.cancel());
+    const oldAngle = card.classList.contains('is-flipped') ? 180 : 0;
+    const newAngle = showBack ? 180 : 0;
+    card.setAttribute('aria-busy', 'true');
+    card.classList.add('is-turning');
+    window.addEventListener('resize', cancel, { once: true });
+    window.addEventListener('scroll', cancel, { once: true, passive: true });
+
     try {
       if (!reducedMotion.matches) {
         const rect = card.getBoundingClientRect();
-        flipRobot.style.transform = `scale(${scale})`;
-        const start = window.innerWidth + 1536 * scale;
-        const stop = rect.right - 30 * scale - 2;
-        const top = rect.top + 5 - 515 * scale;
-        await drive(start, stop, top, 580);
-        await pause(120);
-        flipRobot.classList.add('is-gripping');
-        card.classList.add('is-turning');
-        const shoulder = flipRobot.querySelector('.rig-shoulder');
-        const elbow = flipRobot.querySelector('.rig-elbow');
-        const wrist = flipRobot.querySelector('.rig-wrist');
-        const pivot = (point, center, degrees) => {
-          const angle = degrees * Math.PI / 180;
-          const x = point.x - center.x;
-          const y = point.y - center.y;
-          return { x: center.x + x * Math.cos(angle) - y * Math.sin(angle), y: center.y + x * Math.sin(angle) + y * Math.cos(angle) };
-        };
-        await animateClothTurn(card, showBack, 1550, progress => {
-          const shoulderAngle = -85 * progress;
-          const elbowAngle = 55 * progress;
-          const wristAngle = -15 * progress;
-          shoulder.style.transform = `rotate(${shoulderAngle}deg)`;
-          elbow.style.transform = `rotate(${elbowAngle}deg)`;
-          wrist.style.transform = `rotate(${wristAngle}deg)`;
-          let tip = pivot({ x: 30, y: 515 }, { x: 350, y: 335 }, wristAngle);
-          tip = pivot(tip, { x: 800, y: 140 }, elbowAngle);
-          tip = pivot(tip, { x: 1110, y: 385 }, shoulderAngle);
-          return { x: (tip.x - 30) * scale, y: (tip.y - 515) * scale };
-        }, () => flipRobot.classList.remove('is-gripping'));
-        flipRobot.classList.remove('is-gripping');
-        card.classList.remove('is-turning');
-        shoulder.style.transform = '';
-        elbow.style.transform = '';
-        wrist.style.transform = '';
-        await pause(120);
-      } else {
-        card.classList.toggle('is-flipped', showBack);
-      }
+        const small = window.innerWidth < 660;
+        const size = small ? 46 : 90;
+        const shaft = small ? 8 : 12;
+        const center = rect.left + rect.width / 2;
+        const leftSpace = 2 * (center - size - shaft - 9);
+        const rightSpace = 2 * (window.innerWidth - center - size * .38 - shaft - 9);
+        const scale = Math.min(1, Math.max(.2, Math.min(leftSpace, rightSpace) / rect.width));
+        const edge = rect.width * (1 - scale) / 2;
+        const left = motors.querySelector('.card-motor--left');
+        const right = motors.querySelector('.card-support');
+        const couplers = [...motors.querySelectorAll('.motor-coupler')];
+        const leftEnd = rect.left + edge - size - shaft;
+        const rightEnd = rect.right - edge + shaft;
+        motors.style.setProperty('--motor-size', `${size}px`);
+        motors.style.setProperty('--shaft-size', `${shaft}px`);
+        motors.style.setProperty('--motor-top', `${rect.top + rect.height / 2}px`);
+        left.style.left = `${-size - 24}px`;
+        right.style.left = `${window.innerWidth + 24}px`;
+        motors.hidden = false;
+        couplers.forEach(coupler => { coupler.style.transform = `rotateX(${oldAngle}deg)`; });
 
+        await Promise.all([
+          motion(inner, [
+            { transform: `scale(1) rotateX(${oldAngle}deg)` },
+            { transform: `scale(${scale}) rotateX(${oldAngle}deg)` },
+          ], 450, animations),
+          motion(left, [{ left: `${-size - 24}px` }, { left: `${leftEnd}px` }], 450, animations),
+          motion(right, [{ left: `${window.innerWidth + 24}px` }, { left: `${rightEnd}px` }], 450, animations),
+        ]);
+
+        await Promise.all([
+          motion(inner, [
+            { transform: `scale(${scale}) rotateX(${oldAngle}deg)` },
+            { transform: `scale(${scale}) rotateX(${newAngle}deg)` },
+          ], 1800, animations),
+          ...couplers.map(coupler => motion(coupler, [
+            { transform: `rotateX(${oldAngle}deg)` },
+            { transform: `rotateX(${newAngle}deg)` },
+          ], 1800, animations)),
+        ]);
+
+        await Promise.all([
+          motion(inner, [
+            { transform: `scale(${scale}) rotateX(${newAngle}deg)` },
+            { transform: `scale(1) rotateX(${newAngle}deg)` },
+          ], 450, animations),
+          motion(left, [{ left: `${leftEnd}px` }, { left: `${-size - 24}px` }], 450, animations),
+          motion(right, [{ left: `${rightEnd}px` }, { left: `${window.innerWidth + 24}px` }], 450, animations),
+        ]);
+      }
+    } catch (error) {
+      if (error.name !== 'AbortError') console.error('Card turn interrupted', error.name);
+    } finally {
+      card.classList.toggle('is-flipped', showBack);
       front.setAttribute('aria-expanded', String(showBack));
       front.setAttribute('aria-hidden', String(showBack));
       front.tabIndex = showBack ? -1 : 0;
       back.setAttribute('aria-hidden', String(!showBack));
-      if (showBack) back.removeAttribute('inert');
-      else back.setAttribute('inert', '');
-      (showBack ? returnButton : front).focus({ preventScroll: true });
-
-      if (!reducedMotion.matches) {
-        const position = Number.parseFloat(flipRobot.style.left);
-        await drive(position, window.innerWidth + 1536 * scale, Number.parseFloat(flipRobot.style.top), 490);
-      }
-    } finally {
-      flipRobot.style.display = 'none';
-      flipRobot.classList.remove('is-gripping');
+      back.toggleAttribute('inert', !showBack);
+      cancel();
+      motors.hidden = true;
       card.classList.remove('is-turning');
-      robotBusy = false;
+      card.removeAttribute('aria-busy');
+      window.removeEventListener('resize', cancel);
+      window.removeEventListener('scroll', cancel);
+      motorBusy = false;
+      (showBack ? returnButton : front).focus({ preventScroll: true });
     }
   }
 

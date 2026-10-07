@@ -6,7 +6,7 @@ header { display: flex; align-items: baseline; justify-content: space-between; b
 h1 { margin: 0; font-size: 32px; }
 h2 { margin: 28px 0 0; font-size: 24px; }
 a { color: #1439a0; }
-.demos { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.demos { display: grid; grid-template-columns: 1fr; width: min(100%, 570px); margin: auto; }
 .demos section { min-width: 0; }
 .stage { display: block; position: relative; width: 100%; border: 0; padding: 0; background: white; cursor: pointer; touch-action: manipulation; }
 canvas { display: block; width: 100%; height: auto; aspect-ratio: 5 / 6; }
