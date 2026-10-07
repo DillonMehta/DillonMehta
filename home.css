@@ -17,10 +17,15 @@ h1{font-size:2.5rem;line-height:1;margin-bottom:9px}
 .site-columns{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:38px;border-top:1px solid #aaa;padding-top:29px}
 h2{font-size:1.5rem;line-height:1.2;margin-bottom:18px}
 .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 22px}
-.project-card{height:400px;perspective:1100px}
-.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .55s ease}
+.project-card{position:relative;height:400px;perspective:1300px}
+.project-card.is-turning{z-index:5}
+.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d}
 .project-card.is-flipped .card-inner{transform:rotateY(180deg)}
-.card-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.card-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 1px 2px #0000000a}
+.card-face::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(100deg,transparent 17%,#0000001c 38%,#ffffff8c 51%,#0000001e 66%,transparent 85%),repeating-linear-gradient(0deg,#00000009 0 1px,#ffffff07 1px 3px);mix-blend-mode:multiply}
+.project-card.is-turning .card-face::after{animation:cloth-sheen 1100ms ease-in-out both}
+.cloth-sheet{position:absolute;left:0;top:0;z-index:7;pointer-events:none;filter:drop-shadow(4px 5px 7px #0004)}
+@keyframes cloth-sheen{0%,100%{opacity:0;background-position:-130px 0}21%{opacity:.35}45%{opacity:.75;background-position:20px 0}67%{opacity:.48}85%{opacity:.12;background-position:120px 0}}
 .card-front{display:flex;flex-direction:column;width:100%;height:100%;padding:0;border:0;background:#fff;color:#111;text-align:left;cursor:pointer}
 .card-photo{display:flex;align-items:center;justify-content:center;width:100%;height:calc(100% - 53px);overflow:hidden;background:#f3f3f3}
 .card-photo img{display:block;width:100%;height:100%;object-fit:cover}
@@ -38,13 +43,20 @@ h2{font-size:1.5rem;line-height:1.2;margin-bottom:18px}
 .x-column__head{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
 .x-column__head h2{margin-bottom:16px}
 .x-column__head a{white-space:nowrap}
-.twitter-timeline{display:block}
-.x-column--fallback .twitter-timeline{display:none}
-.x-fallback__label{font-style:italic}
-.x-fallback p{margin:0;padding:14px 0;border-top:1px solid #d6d6d6}
-.x-fallback>a{display:inline-block;margin-top:14px}
-.flip-robot{position:fixed;display:none;width:88px;height:88px;object-fit:contain;transform-origin:12% 88%;pointer-events:none;z-index:30;filter:drop-shadow(0 2px 3px #0002)}
+.robot-rig{position:fixed;display:none;width:1536px;height:1024px;transform:scale(.27);transform-origin:top left;pointer-events:none;z-index:30;filter:drop-shadow(0 18px 13px #0003)}
+.robot-rig img,.rig-shoulder,.rig-elbow,.rig-wrist{position:absolute;inset:0;width:1536px;height:1024px}
+.robot-rig img{display:block}
+.rig-base{clip-path:polygon(69% 26%,87% 26%,100% 54%,100% 100%,38% 100%,38% 61%,56% 47%,65% 44%)}
+.rig-shoulder{transform-origin:1110px 385px}
+.rig-upper{clip-path:polygon(46% 0,76% 0,83% 7%,82% 26%,79% 45%,72% 59%,59% 52%,57% 37%,43% 23%,42% 7%)}
+.rig-elbow{transform-origin:800px 140px}
+.rig-forearm{clip-path:polygon(22% 20%,38% 13%,47% 8%,62% 3%,69% 7%,69% 27%,54% 39%,37% 45%,24% 43%,18% 38%)}
+.rig-wrist{transform-origin:350px 335px}
+.rig-gripper{clip-path:polygon(0 21%,24% 20%,29% 28%,28% 49%,21% 54%,0 52%)}
+.rig-gripper--closed{opacity:0}
+.robot-rig.is-gripping .rig-gripper--open{opacity:0}
+.robot-rig.is-gripping .rig-gripper--closed{opacity:1}
 .site-footer{margin:47px 0 0;padding:22px 0 30px;border-top:1px solid #aaa}
 @media(max-width:1040px){.site-columns{display:block}.x-column{border-left:0;border-top:1px solid #aaa;padding:28px 0 0;margin-top:34px;max-width:550px}.project-card{height:440px}}
 @media(max-width:660px){.site-shell{width:min(100% - 32px,480px);margin-top:22px}.site-header{display:block;padding-bottom:21px}.site-header nav{justify-content:flex-start;margin-top:14px}.site-columns{padding-top:22px}.project-grid{grid-template-columns:1fr;gap:19px}.project-card{height:410px}.card-back{padding:19px}.x-column{margin-top:26px}.site-footer{margin-top:30px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card-inner{transition:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card.is-turning .card-face::after{animation:none!important}}

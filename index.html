@@ -7,6 +7,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='white'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Times New Roman,serif' font-size='42' font-weight='bold' fill='black'%3ED%3C/text%3E%3C/svg%3E">
   <title>Dillon Mehta</title>
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="x-feed.css">
 </head>
 <body>
   <a class="skip-link" href="#projects">Skip to projects</a>
@@ -108,21 +109,27 @@
 
       <aside class="x-column" aria-labelledby="x-title">
         <div class="x-column__head"><h2 id="x-title">On X</h2><a href="https://x.com/PickleDilll_">@PickleDilll_</a></div>
-        <a class="twitter-timeline" data-theme="light" data-chrome="noheader nofooter" data-height="820" data-dnt="true" href="https://x.com/PickleDilll_">Posts by Dillon Mehta</a>
-        <div class="x-fallback">
-          <p class="x-fallback__label">From my X posts (not live)</p>
-          <p>Jev has me asking which parts of an agent loop actually need language.</p>
-          <p>Reflective packaging changed a robot’s camera input without changing the geometry. That exposed what its policy had learned.</p>
-          <p>Pivoting CueBench meant leaving traction behind. Demand alone did not tell us what we wanted to build for years.</p>
-          <a href="https://x.com/PickleDilll_">More posts on X</a>
-        </div>
+        <div data-x-posts></div>
       </aside>
     </div>
 
     <footer class="site-footer"><a href="mailto:dillon@cuebench.dev">dillon@cuebench.dev</a></footer>
   </div>
-  <img id="flip-robot" class="flip-robot" src="assets/robot-helper.png" alt="" aria-hidden="true">
+  <div id="flip-robot" class="robot-rig" aria-hidden="true">
+    <img class="rig-base" src="assets/industrial-arm.png" alt="">
+    <div class="rig-shoulder">
+      <img class="rig-upper" src="assets/industrial-arm.png" alt="">
+      <div class="rig-elbow">
+        <img class="rig-forearm" src="assets/industrial-arm.png" alt="">
+        <div class="rig-wrist">
+          <img class="rig-gripper rig-gripper--open" src="assets/industrial-arm.png" alt="">
+          <img class="rig-gripper rig-gripper--closed" src="assets/industrial-arm-grip.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="cloth-turn.js" defer></script>
   <script src="site.js" defer></script>
-  <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+  <script src="x-feed.js" defer></script>
 </body>
 </html>
