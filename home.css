@@ -39,11 +39,11 @@ h2{font-size:1.5rem;line-height:1.2;margin-bottom:18px}
 .x-column__head h2{margin-bottom:16px}
 .x-column__head a{white-space:nowrap}
 .twitter-timeline{display:block}
-.twitter-timeline:not(.twitter-timeline-rendered){display:none}
+.x-column--fallback .twitter-timeline{display:none}
 .x-fallback__label{font-style:italic}
 .x-fallback p{margin:0;padding:14px 0;border-top:1px solid #d6d6d6}
 .x-fallback>a{display:inline-block;margin-top:14px}
-.flip-robot{position:fixed;display:none;width:72px;height:72px;object-fit:contain;pointer-events:none;z-index:30;filter:drop-shadow(0 2px 3px #0002)}
+.flip-robot{position:fixed;display:none;width:88px;height:88px;object-fit:contain;transform-origin:12% 88%;pointer-events:none;z-index:30;filter:drop-shadow(0 2px 3px #0002)}
 .site-footer{margin:47px 0 0;padding:22px 0 30px;border-top:1px solid #aaa}
 @media(max-width:1040px){.site-columns{display:block}.x-column{border-left:0;border-top:1px solid #aaa;padding:28px 0 0;margin-top:34px;max-width:550px}.project-card{height:440px}}
 @media(max-width:660px){.site-shell{width:min(100% - 32px,480px);margin-top:22px}.site-header{display:block;padding-bottom:21px}.site-header nav{justify-content:flex-start;margin-top:14px}.site-columns{padding-top:22px}.project-grid{grid-template-columns:1fr;gap:19px}.project-card{height:410px}.card-back{padding:19px}.x-column{margin-top:26px}.site-footer{margin-top:30px}}

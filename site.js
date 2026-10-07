@@ -27,18 +27,25 @@ for (const card of document.querySelectorAll('[data-project]')) {
   async function flip(showBack) {
     if (robotBusy) return;
     robotBusy = true;
+    let push;
 
     if (!reducedMotion.matches) {
       const rect = card.getBoundingClientRect();
-      const robotSize = 72;
+      const robotSize = 88;
       const start = window.innerWidth + robotSize;
-      const stop = Math.max(8, Math.min(window.innerWidth - robotSize - 8, rect.right - 49));
-      const top = Math.max(8, Math.min(window.innerHeight - robotSize - 8, rect.top + rect.height * 0.64));
+      const stop = Math.max(8, Math.min(window.innerWidth - robotSize - 8, rect.right - 65));
+      const top = Math.max(8, Math.min(window.innerHeight - robotSize - 8, rect.top + rect.height * 0.58));
       await drive(start, stop, top, 420);
-      await flipRobot.animate(
-        [{ transform: 'rotate(0deg)' }, { transform: 'rotate(-22deg)' }, { transform: 'rotate(0deg)' }],
-        { duration: 260, easing: 'ease-in-out' }
-      ).finished.catch(() => {});
+      push = flipRobot.animate(
+        [
+          { transform: 'translateX(0) rotate(0deg)' },
+          { transform: 'translateX(-18px) rotate(-16deg)', offset: 0.43 },
+          { transform: 'translateX(-22px) rotate(-14deg)', offset: 0.58 },
+          { transform: 'translateX(0) rotate(0deg)' }
+        ],
+        { duration: 670, easing: 'ease-in-out' }
+      );
+      await pause(245);
     }
 
     card.classList.toggle('is-flipped', showBack);
@@ -49,7 +56,11 @@ for (const card of document.querySelectorAll('[data-project]')) {
     if (showBack) back.removeAttribute('inert');
     else back.setAttribute('inert', '');
 
-    if (!reducedMotion.matches) await pause(550);
+    if (push) {
+      await push.finished.catch(() => {});
+      push.cancel();
+      await pause(170);
+    }
     (showBack ? returnButton : front).focus({ preventScroll: true });
 
     if (!reducedMotion.matches) {
@@ -69,7 +80,9 @@ const xFallback = document.querySelector('.x-fallback');
 if (xColumn && xFallback) {
   const updateFeed = () => {
     const frame = xColumn.querySelector('iframe');
-    xFallback.hidden = Boolean(frame && frame.clientHeight > 150);
+    const hasFeed = Boolean(frame && frame.clientHeight > 150);
+    xFallback.hidden = hasFeed;
+    xColumn.classList.toggle('x-column--fallback', Boolean(frame && !hasFeed));
   };
   const watchFrame = new MutationObserver(() => {
     const frame = xColumn.querySelector('iframe');
