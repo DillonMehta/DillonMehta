@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="650" viewBox="0 0 700 650">
+<rect width="700" height="650" fill="#f4f4f1"/>
+<g font-family="Arial,sans-serif" fill="#182826"><text x="70" y="106" font-size="46">Ward</text><text x="70" y="143" font-size="20">Knowledge-base integrity</text></g>
+<g fill="white" stroke="#61746e" stroke-width="2"><rect x="70" y="193" width="560" height="82"/><rect x="70" y="310" width="560" height="82"/><rect x="70" y="427" width="560" height="82"/></g>
+<g font-family="Arial,sans-serif" fill="#182826"><text x="96" y="225" font-size="23">Ingestion gate</text><text x="96" y="253" font-size="17">Score and quarantine untrusted documents</text><text x="96" y="342" font-size="23">Retrieval monitor</text><text x="96" y="370" font-size="17">Inspect what reaches the model</text><text x="96" y="459" font-size="23">Provenance ledger</text><text x="96" y="487" font-size="17">Trace sources, audit changes, support rollback</text></g>
+<path d="M350 275v26m-6-6 6 6 6-6M350 392v26m-6-6 6 6 6-6" fill="none" stroke="#61746e" stroke-width="2"/>
+<text x="70" y="570" font-family="monospace" font-size="17" fill="#61746e">Python · SDK · API · review console</text>
+</svg>

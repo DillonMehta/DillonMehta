@@ -25,8 +25,16 @@ h2{font-size:1.5rem;line-height:1.2;margin-bottom:18px}
 .card-front{display:flex;flex-direction:column;width:100%;height:100%;padding:0;border:0;background:#fff;color:#111;text-align:left;cursor:pointer}
 .card-photo{display:flex;align-items:center;justify-content:center;width:100%;height:calc(100% - 53px);overflow:hidden;background:#f3f3f3}
 .card-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.card-photo--logo{flex-direction:column;gap:22px;background:#fff}
 .card-photo--logo img{width:78%;height:auto;object-fit:contain}
-.card-photo--poster img,.card-photo--diagram img{object-fit:contain}
+.yc-batch{display:flex;align-items:center;gap:8px;font:15px/1.2 Arial,sans-serif;color:#555}
+.yc-mark{display:grid;place-items:center;width:23px;height:23px;background:#f26522;color:white;font-size:19px}
+.card-photo--poster{position:relative}
+.card-photo--poster img{position:absolute;top:0;left:-30%;width:160%;height:auto;max-width:none}
+.card-photo--vex img{object-position:center 22%}
+.card-photo--diagram img,.card-photo--chip img{object-fit:contain}
+.card-photo--chip{background:#f5f3ef}
+.image-credit{font-size:13px;color:#555}
 .card-caption{display:flex;align-items:center;min-height:53px;border-bottom:1px solid #aaa}
 .card-caption strong{font-size:1.18rem;line-height:1.1}
 .card-front:hover .card-caption strong,.card-front:focus-visible .card-caption strong{text-decoration:underline}

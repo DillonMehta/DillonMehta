@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>UT robotics research — Dillon Mehta</title>
+  <style>
+    body{margin:0;background:white;color:#111;font:18px/1.5 "Times New Roman",Times,serif}main{max-width:980px;margin:40px auto;padding:0 24px}a{color:#1439a0}h1{font-size:2rem;line-height:1.15}h2{font-size:1.4rem;margin-top:30px}img{display:block;width:100%;height:auto}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{border-bottom:1px solid #aaa;text-align:left;padding:10px 12px 10px 0;vertical-align:top}figcaption{font-size:16px;color:#555;margin-top:10px}figure{margin:24px 0}footer{border-top:1px solid #aaa;margin-top:36px;padding:18px 0}
+  </style>
+</head>
+<body>
+  <main>
+    <a href="index.html">Dillon Mehta / Projects</a>
+    <h1>UT robotics research</h1>
+    <p>Affordance learning and verification · Autonomous Systems Group · In progress</p>
+    <p>I am researching how robots can learn what objects can do by interacting with them. The challenge is not just choosing an action, but deciding whether the interaction gave the robot useful evidence about the object.</p>
+    <h2>Connecting functional memory to an action policy</h2>
+    <figure>
+      <a href="assets/ut-vla-architecture.png"><img src="assets/ut-vla-architecture.png" alt="Proposed interactive functional VLA architecture: visual-language backbone, affordance memory, function adapter, action expert, execution, and verification feedback"></a>
+      <figcaption>The architecture from my current research slides. This is a design under development, not a completed deployment.</figcaption>
+    </figure>
+    <p>The design keeps an object’s affordance beliefs and uncertainty alongside the vision-language-action policy. An adapter connects that functional memory to the policy. When uncertainty is high, the robot can take an exploratory action, check the physical effect, and update its beliefs.</p>
+    <h2>Was the test valid?</h2>
+    <p>A verification record describes the target object, the affordance being tested, the probe action, the initial state, and the expected effect. The verifier evaluates validity, evidence, and confidence separately. For a push test, contact and sufficient applied force matter before any conclusion can be drawn from the object’s motion.</p>
+    <table>
+      <thead><tr><th>Observed interaction</th><th>Interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>Valid push; the object moves.</td><td>Positive evidence that the object is movable.</td></tr>
+        <tr><td>Valid push; the object does not move.</td><td>Negative evidence for movability under the tested conditions.</td></tr>
+        <tr><td>The robot never makes valid contact.</td><td>Uninformative. Do not treat it as evidence that the object is immovable.</td></tr>
+      </tbody>
+    </table>
+    <p>The goal is to verify the physical effect predicted by an affordance, rather than equating it with overall task success. An action can provide useful evidence even when the larger task is unfinished.</p>
+    <h2>Current work and next steps</h2>
+    <p>My sensing work uses Grounding DINO and optical flow to examine action outcomes. The new architecture extends that work into an interaction-updatable functional memory. Adapter placement and the choice of policy backbone remain research questions.</p>
+    <p>The plan starts with structured, deterministic checks before moving toward richer sensor-based or learned verification. The slides also outline Franka teleoperation and synchronized visual, proprioceptive, and force data as next steps.</p>
+    <footer><a href="mailto:dillon@cuebench.dev">dillon@cuebench.dev</a></footer>
+  </main>
+</body>
+</html>

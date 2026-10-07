@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="650" viewBox="0 0 700 650">
+<rect width="700" height="650" fill="#f3f4f5"/>
+<g font-family="monospace" fill="#253247"><text x="58" y="92" font-size="27">session → signals → feedback</text><text x="58" y="131" font-size="18" fill="#627083">On-device developer evaluation</text></g>
+<g stroke="#788595" stroke-width="2" fill="white"><rect x="58" y="179" width="584" height="83"/><rect x="58" y="298" width="584" height="83"/><rect x="58" y="417" width="584" height="114"/></g>
+<g font-family="monospace" fill="#253247"><text x="83" y="212" font-size="21">Parse coding sessions</text><text x="83" y="240" font-size="16">Prompts · tool calls · edits · verification</text><text x="83" y="331" font-size="21">Extract evidence + score</text><text x="83" y="359" font-size="16">Local model · Git signals · confidence gate</text><text x="83" y="450" font-size="21">Return grounded feedback</text><text x="83" y="479" font-size="16">Delegation / description</text><text x="83" y="505" font-size="16">Discernment / diligence</text></g>
+<path d="M350 262v27m-6-6 6 6 6-6M350 381v27m-6-6 6 6 6-6" fill="none" stroke="#788595" stroke-width="2"/>
+<text x="58" y="588" font-family="monospace" font-size="16" fill="#627083">Prompts, code, and paths stay local.</text>
+</svg>

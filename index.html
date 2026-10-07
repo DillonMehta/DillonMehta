@@ -32,7 +32,7 @@
           <article class="project-card" data-project>
             <div class="card-inner">
               <button class="card-face card-front" type="button" aria-label="Flip CueBench to read what I did and learned" aria-expanded="false">
-                <span class="card-photo card-photo--logo"><img src="assets/cuebench-wordmark.png" alt="CueBench wordmark"></span>
+                <span class="card-photo card-photo--logo"><img src="assets/cuebench-wordmark.png" alt="CueBench wordmark"><span class="yc-batch"><span class="yc-mark">Y</span> Y Combinator · S26</span></span>
                 <span class="card-caption"><strong>CueBench</strong></span>
               </button>
               <div class="card-face card-back" aria-hidden="true" inert>
@@ -47,7 +47,7 @@
           <article class="project-card" data-project>
             <div class="card-inner">
               <button class="card-face card-front" type="button" aria-label="Flip maze robot to read what I did and learned" aria-expanded="false">
-                <span class="card-photo"><img src="assets/maze-robot.jpg" alt="Maze robot with an MIT Science Olympiad medal"></span>
+                <span class="card-photo"><img src="assets/maze-robot-clean.png" alt="Maze robot and MIT Science Olympiad medal on a plain tabletop"></span>
                 <span class="card-caption"><strong>Maze robot</strong></span>
               </button>
               <div class="card-face card-back" aria-hidden="true" inert>
@@ -62,7 +62,7 @@
           <article class="project-card" data-project>
             <div class="card-inner">
               <button class="card-face card-front" type="button" aria-label="Flip VEX climbing system to read what I did and learned" aria-expanded="false">
-                <span class="card-photo"><img src="assets/vex-worlds.jpg" alt="VEX robot climbing at the World Championship"></span>
+                <span class="card-photo card-photo--vex"><img src="assets/vex-climb.jpg" alt="My VEX robot hanging from the third rung"></span>
                 <span class="card-caption"><strong>VEX climbing system</strong></span>
               </button>
               <div class="card-face card-back" aria-hidden="true" inert>
@@ -92,14 +92,60 @@
           <article class="project-card" data-project>
             <div class="card-inner">
               <button class="card-face card-front" type="button" aria-label="Flip matrix multiplication unit to read its status" aria-expanded="false">
-                <span class="card-photo card-photo--diagram"><img src="assets/matrix-learning.svg" alt="Block diagram of matrix multiplication arithmetic"></span>
+                <span class="card-photo card-photo--chip"><img src="assets/chip-die-reference.jpg" alt="Reference photograph of an Intel CPU die, not my unfinished matrix multiplication unit"></span>
                 <span class="card-caption"><strong>Matrix multiplication unit</strong></span>
               </button>
               <div class="card-face card-back" aria-hidden="true" inert>
                 <h3>Matrix multiplication unit</h3>
                 <p><b>Learning phase.</b> I am learning chip design and design verification while working toward my own matrix multiplication unit.</p>
                 <p>I have not finished the build. Come back to see what I make and what the verification work teaches me.</p>
+                <p class="image-credit">Reference CPU die photo, not my chip. <a href="https://commons.wikimedia.org/wiki/File:Intel@14nm@Cypress_Cove@Rocket_Lake-S@Core_i5-11400@SRKP0_DSCx04_top-metal@makro_(51195700572).jpg">Fritzchens Fritz · CC0</a></p>
+                <div class="card-actions"><button class="card-return" type="button">Back to photo</button></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-project>
+            <div class="card-inner">
+              <button class="card-face card-front" type="button" aria-label="Flip Ward to read what I did and learned" aria-expanded="false">
+                <span class="card-photo card-photo--diagram"><img src="assets/ward-pipeline.svg" alt="Ward's ingestion gate, retrieval monitor, and provenance ledger"></span>
+                <span class="card-caption"><strong>Ward</strong></span>
+              </button>
+              <div class="card-face card-back" aria-hidden="true" inert>
+                <h3>Ward</h3>
+                <p><b>What I did.</b> Built an integrity layer for retrieval-augmented AI: a document ingestion gate, a retrieval monitor, and a tamper-evident provenance ledger, with an SDK and review console.</p>
+                <p><b>What I learned.</b> Defending the model is not enough if its sources can be poisoned. Detection also needs traceability, permission checks, and a way to review and reverse bad inputs.</p>
                 <div class="card-actions"><button class="card-return" type="button">Back to diagram</button></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-project>
+            <div class="card-inner">
+              <button class="card-face card-front" type="button" aria-label="Flip local developer grading platform to read what I did and learned" aria-expanded="false">
+                <span class="card-photo card-photo--diagram"><img src="assets/developer-grading.svg" alt="Local scoring pipeline for AI-assisted development sessions"></span>
+                <span class="card-caption"><strong>Local developer grading platform</strong></span>
+              </button>
+              <div class="card-face card-back" aria-hidden="true" inert>
+                <h3>Local developer grading platform</h3>
+                <p><b>What I did.</b> Built an on-device system that parses AI coding sessions, combines learned scores with Git and verification signals, and gives feedback on how the developer used the agent. A Rust implementation supports several coding tools.</p>
+                <p><b>What I learned.</b> A score needs evidence and a confidence threshold. I also built privacy checks so prompts, code, and file paths stay local.</p>
+                <div class="card-actions"><button class="card-return" type="button">Back to diagram</button></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-project>
+            <div class="card-inner">
+              <button class="card-face card-front" type="button" aria-label="Flip UT robotics research to read what I am working on" aria-expanded="false">
+                <span class="card-photo card-photo--diagram"><img src="assets/ut-vla-architecture.png" alt="Interactive functional VLA architecture from my UT research slides"></span>
+                <span class="card-caption"><strong>UT robotics research</strong></span>
+              </button>
+              <div class="card-face card-back" aria-hidden="true" inert>
+                <h3>UT robotics research</h3>
+                <p><b>What I am doing.</b> At UT Austin’s Autonomous Systems Group, I am researching how robots test objects’ affordances. My current design connects functional memory to a vision-language-action policy and verifies physical outcomes before updating beliefs.</p>
+                <p><b>What I am learning.</b> A failed push is not evidence that an object is immovable without valid contact. The verifier must distinguish positive, negative, and uninformative outcomes.</p>
+                <div class="card-actions"><a href="ut-research.html">Architecture and verification</a><button class="card-return" type="button">Back to diagram</button></div>
               </div>
             </div>
           </article>
