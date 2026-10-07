@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 500" role="img" aria-label="Matrix multiplication diagram">
+  <rect width="640" height="500" fill="#f3f3f3"/>
+  <g fill="#111" font-family="Times New Roman,Times,serif">
+    <text x="320" y="88" text-anchor="middle" font-size="34">A × B = C</text>
+    <text x="320" y="423" text-anchor="middle" font-size="25">multiply → accumulate → verify</text>
+  </g>
+  <g stroke="#111" fill="#fff" stroke-width="2">
+    <rect x="78" y="157" width="120" height="120"/>
+    <rect x="260" y="157" width="120" height="120"/>
+    <rect x="442" y="157" width="120" height="120"/>
+    <path d="M138 157v120M78 217h120M320 157v120M260 217h120M502 157v120M442 217h120"/>
+  </g>
+  <g fill="#111" font-family="Times New Roman,Times,serif" font-size="24" text-anchor="middle">
+    <text x="108" y="196">a₀₀</text><text x="168" y="196">a₀₁</text><text x="108" y="256">a₁₀</text><text x="168" y="256">a₁₁</text>
+    <text x="290" y="196">b₀₀</text><text x="350" y="196">b₀₁</text><text x="290" y="256">b₁₀</text><text x="350" y="256">b₁₁</text>
+    <text x="472" y="196">c₀₀</text><text x="532" y="196">c₀₁</text><text x="472" y="256">c₁₀</text><text x="532" y="256">c₁₁</text>
+    <text x="230" y="227" font-size="35">×</text><text x="412" y="227" font-size="35">=</text>
+  </g>
+</svg>
