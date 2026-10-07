@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research notes on fault points, advice, and cognitive bias in multi-agent medical AI systems.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c54b2'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white'%3EDM%3C/text%3E%3C/svg%3E">
+  <title>Multi-agent medical AI research · Dillon Mehta</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="site-header__inner"><a class="site-name" href="./">Dillon Mehta</a><nav aria-label="Main navigation"><a href="./#work">Work</a><a href="./#projects">Projects</a><a href="./#notes">Notes</a><a href="./#contact">Contact</a></nav></div></header>
+  <main id="main" class="page article">
+    <a class="back-link" href="./#projects">All projects</a>
+    <p class="eyebrow">First-author research · 2025</p>
+    <h1>Multi-agent medical AI research</h1>
+    <p class="article-lead">What happens when an AI diagnostic team receives outside advice just as its working diagnosis is changing? I studied whether correct, incorrect, and bias-shaped suggestions help or mislead the system.</p>
+    <p class="article-links"><a href="https://arxiv.org/abs/2609.02191">Read the paper on arXiv</a><a href="assets/research-poster.png" target="_blank" rel="noopener">View the full poster</a></p>
+    <section class="article-section"><h2>My role and the simulation</h2>
+      <p>As co-first and corresponding author, I directed the study, built the base GPT-4.1 multi-agent simulation, and directed programming for the ablations. The work was published in CCIS and presented at NeurIPS workshops.</p>
+      <p>The simulation included a Patient who answered symptom questions, a Doctor who formed working diagnoses, a Specialist who reviewed the case, a Measurement Agent that returned case-grounded laboratory or imaging data, and a Priming Agent that inserted an outside suggestion. Each Doctor turn logged a working diagnosis so we could see how it changed.</p>
+      <p>I first ran 214 MedQA cases without intervention. I embedded consecutive diagnoses and measured cosine similarity. A score below the tenth-percentile threshold (0.5462) marked a diagnostic fault point; the lowest qualifying score selected the intervention turn. We then reran qualifying cases with one priming message at that point.</p>
+    </section>
+    <section class="article-section"><h2>What the interventions changed</h2>
+      <p>Correct guidance with reasoning raised Top-1 accuracy from 50% to 60% in the main comparison. An incorrect suggestion lowered Top-1 accuracy to 48%, even when the correct answer remained among the top five possibilities.</p>
+      <div class="table-wrap"><table><caption>Main intervention comparison</caption><thead><tr><th>Condition</th><th>Top-1</th><th>Top-3</th><th>Top-5</th></tr></thead><tbody><tr><td>No intervention</td><td>50%</td><td>70%</td><td>74%</td></tr><tr><td>Correct subcategory</td><td>56%</td><td>72%</td><td>80%</td></tr><tr><td>Incorrect subcategory</td><td>48%</td><td>72%</td><td>78%</td></tr><tr><td>Correct + reasoning</td><td>60%</td><td>80%</td><td>86%</td></tr><tr><td>Incorrect + reasoning</td><td>48%</td><td>76%</td><td>80%</td></tr></tbody></table></div>
+      <p>For the bias experiments, the Priming Agent paired an incorrect diagnostic suggestion with one of nine reasoning patterns. Overconfidence produced the largest Top-1 decline in its 50-scenario comparison, from 50% to 44%. Other cues behaved differently: representative heuristics reached 52%, while anchoring and omission matched baseline. The study did not show that every bias reduced accuracy.</p>
+    </section>
+    <section class="article-section"><h2>What I learned from the ablations</h2>
+      <p>Timing and repetition mattered. In a 25-case experiment with qualifying faults in both phases, correct-subcategory guidance reached 60% Top-1 when inserted in either phase alone and 76% when inserted in both. In another 25-case set, repeating an incorrect subcategory suggestion at three fault points reduced Top-1 accuracy from 44.4% with one intervention to 36%.</p>
+      <p>Incorrect cues increased requested tests and Doctor–Specialist disagreement. Correct cues could also shorten deliberation or bypass specialist input. Those effects are why I looked beyond final accuracy at how the diagnosis was reached.</p>
+      <details><summary>Limits of the experiment</summary><p>All agents shared one model, the cases were structured, and prompt-injected biases simplify real cognitive biases. These results describe the simulation, not clinical behavior with real patients.</p></details>
+    </section>
+    <figure class="poster-preview"><a href="assets/research-poster.png" target="_blank" rel="noopener"><img src="assets/research-poster.png" alt="NeurIPS workshop poster summarizing the diagnostic simulation, intervention results, bias conditions, and ablations" loading="lazy"></a><figcaption>Workshop poster. Open the image to zoom in.</figcaption></figure>
+    <p class="article-end"><a href="portfolio.pdf">See the full technical portfolio (PDF)</a></p>
+  </main>
+  <footer class="site-footer"><span>© 2026 Dillon Mehta</span><a href="./">Back home</a></footer>
+</body>
+</html>

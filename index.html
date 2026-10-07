@@ -3,13 +3,83 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dillon Mehta — Portfolio</title>
-  <style>
-    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
-    iframe { display: block; width: 100%; height: 100%; border: 0; }
-  </style>
+  <meta name="description" content="Dillon Mehta builds robots, embedded systems, and AI evaluation tools. Selected work, research, and writing.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c54b2'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white'%3EDM%3C/text%3E%3C/svg%3E">
+  <title>Dillon Mehta</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <iframe src="./portfolio.pdf#toolbar=0&navpanes=0&view=Fit" title="Dillon Mehta's engineering portfolio"></iframe>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-name" href="./">Dillon Mehta</a>
+      <nav aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#notes">Notes</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <section class="intro" aria-labelledby="intro-title">
+      <p class="eyebrow">ECE Honors · UT Austin</p>
+      <h1 id="intro-title">Hi, I’m Dillon.</h1>
+      <p class="lead">I like building things that move, reason, or help people get work done. Most of my time goes into robotics, embedded software, and AI systems.</p>
+      <p>I co-founded <a href="https://www.ycombinator.com/companies/cuebench">CueBench</a>, work on autonomous systems research, and have spent years building competition robots. This is a running record of the projects and questions I keep coming back to.</p>
+      <div class="intro-links" aria-label="Profiles">
+        <a href="mailto:dillonmehta@utexas.edu">Email</a>
+        <a href="https://www.linkedin.com/in/dillon-mehta/">LinkedIn</a>
+        <a href="https://github.com/DillonMehta">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=tNUbaMQAAAAJ&amp;hl=en">Google Scholar</a>
+        <a href="https://x.com/PickleDilll_">X</a>
+      </div>
+    </section>
+
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="section-head"><h2 id="work-title">Work &amp; research</h2></div>
+      <div class="entry-list">
+        <article class="entry"><div class="entry__meta">2026–now</div><div><h3>CueBench</h3><p class="entry__role">Co-founder &amp; CEO · YC S26</p><p>Built evaluation and reinforcement-learning environments for scientific reasoning and performance engineering, with deterministic checks for model outputs. Projects include PerfGym and Quantum Hamiltonian Bench. The company was selected for Y Combinator’s S26 batch.</p></div></article>
+        <article class="entry"><div class="entry__meta">2026–now</div><div><h3>UT Austin Autonomous Systems Group</h3><p class="entry__role">Student research assistant</p><p>Working on how robots infer what objects can be used for, including literature review and image-data organization for affordance-learning experiments.</p></div></article>
+        <article class="entry"><div class="entry__meta">2025</div><div><h3>Multi-agent medical AI research</h3><p class="entry__role">Co-first &amp; corresponding author</p><p>Built the base diagnostic simulation and directed ablation work studying how outside advice and cognitive biases affect AI diagnoses. Published in CCIS and presented at NeurIPS workshops.</p></div></article>
+        <article class="entry"><div class="entry__meta">2024–25</div><div><h3>Energy Tech Nexus / Cephyron IRM</h3><p class="entry__role">Software engineering intern</p><p>Built an initial backend, investor–startup matching tools, and CRM workflows for a platform supporting carbon-negative startups.</p></div></article>
+        <article class="entry"><div class="entry__meta">2021–now</div><div><h3>JHS VEX Robotics Club / Katy Robotics Alliance</h3><p class="entry__role">Co-founder, former president &amp; senior advisor</p><p>Helped grow a 200+ student robotics community, founded and mentored eight high-school teams, and led teams to a Texas state championship and seven VEX Worlds qualifications.</p></div></article>
+        <article class="entry"><div class="entry__meta">2025–now</div><div><h3>ATX Science Olympiad</h3><p class="entry__role">Build team member</p><p>Coordinate and run three build events at a 1,000+ competitor invitational.</p></div></article>
+      </div>
+    </section>
+
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="section-head"><h2 id="projects-title">Projects</h2><span class="section-note">A few things I can show in detail</span></div>
+      <div class="project-list">
+        <a class="project" href="maze-robot.html"><img src="assets/maze-robot.jpg" width="800" height="800" alt="Maze navigation robot beside its MIT Science Olympiad medal" loading="lazy"><span class="project__copy"><span class="project__year">2023–26 · Embedded / robotics</span><strong>Maze navigation robot</strong><span>C++ motion control, encoder and gyro feedback, a custom PCB, and a 3D-printed shell.</span><span class="project__more">Read the build notes</span></span></a>
+        <a class="project" href="vex-robotics.html"><img src="assets/vex-worlds.jpg" width="800" height="800" alt="VEX robot climbing the ladder at the World Championship" loading="lazy"><span class="project__copy"><span class="project__year">2025 · Mechanisms / robotics</span><strong>VEX climbing and odometry</strong><span>A three-rung climb, drivetrain-powered winch, pneumatic power take-off, and tracking pod.</span><span class="project__more">Read the build notes</span></span></a>
+        <a class="project" href="medical-ai.html"><img src="assets/research-poster.png" width="800" height="1200" alt="Research poster showing the medical AI simulation and results" loading="lazy"><span class="project__copy"><span class="project__year">2025 · AI research</span><strong>Multi-agent medical AI</strong><span>A simulation of diagnostic fault points, outside advice, and cognitive-bias interventions.</span><span class="project__more">Read the research notes</span></span></a>
+      </div>
+      <div class="section-after"><h3>Also built</h3><p>An AI developer-performance grading platform that deterministically analyzes human–AI interaction traces and gives targeted feedback. It reached $9K in monthly recurring revenue before a product pivot.</p></div>
+    </section>
+
+    <section id="notes" class="section" aria-labelledby="notes-title">
+      <div class="section-head"><h2 id="notes-title">Notes</h2><a href="https://x.com/PickleDilll_">More on X</a></div>
+      <p>Short thoughts from things I’m reading, building, or noticing. My X feed is <a href="https://x.com/PickleDilll_">@PickleDilll_</a>.</p>
+      <div class="note-list">
+        <article class="note"><p class="note__label">Robotics</p><h3>What a reflection taught a robot</h3><p>A robot can mistake appearance for geometry. I saw one fail around reflective packaging even though the object itself had not changed.</p></article>
+        <article class="note"><p class="note__label">AI agents</p><h3>Asking better questions</h3><p>Learning when an agent should ask for clarification seems different from learning which question would actually reduce uncertainty.</p></article>
+        <article class="note"><p class="note__label">Building CueBench</p><h3>When traction is not the answer</h3><p>Pivoting taught me that people wanting a product and wanting to spend years building it are separate questions.</p></article>
+      </div>
+      <div class="x-feed"><button id="load-x" type="button">Show my posts from X</button><span>Loads the live feed from X only if you choose to.</span><div id="x-feed-content" hidden><a class="twitter-timeline" data-height="480" data-chrome="noheader nofooter" href="https://twitter.com/PickleDilll_">Posts by Dillon Mehta</a></div></div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="section-head"><h2 id="contact-title">Contact</h2></div>
+      <p>For a project, research conversation, or just a good question, email me at <a href="mailto:dillonmehta@utexas.edu">dillonmehta@utexas.edu</a>.</p>
+      <p class="small-links"><a href="portfolio.pdf">Technical portfolio (PDF)</a><span aria-hidden="true">·</span><a href="https://arxiv.org/abs/2609.02191">Research paper</a></p>
+    </section>
+  </main>
+
+  <aside class="robot-helper" aria-label="Robot navigation helper"><button id="robot-button" class="robot-helper__button" type="button" aria-label="Open robot helper" aria-expanded="false" aria-controls="robot-menu"><img src="assets/robot-helper.png" width="96" height="96" alt=""></button><div id="robot-menu" class="robot-helper__menu" hidden><p>Need a hand?</p><button type="button" data-go="projects">Bring me to projects</button><button type="button" data-go="work">Bring me to work</button><button type="button" data-go="notes">Bring me to notes</button></div></aside>
+  <footer class="site-footer"><span>© 2026 Dillon Mehta</span><span>Built to be read.</span></footer>
+  <script src="site.js" defer></script>
 </body>
 </html>

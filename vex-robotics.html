@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dillon Mehta's VEX climbing mechanism, power take-off, and odometry hardware.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c54b2'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white'%3EDM%3C/text%3E%3C/svg%3E">
+  <title>VEX climbing and odometry · Dillon Mehta</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="site-header__inner"><a class="site-name" href="./">Dillon Mehta</a><nav aria-label="Main navigation"><a href="./#work">Work</a><a href="./#projects">Projects</a><a href="./#notes">Notes</a><a href="./#contact">Contact</a></nav></div></header>
+  <main id="main" class="page article">
+    <a class="back-link" href="./#projects">All projects</a>
+    <p class="eyebrow">Mechanical design · Competition robotics</p>
+    <h1>VEX climbing and odometry</h1>
+    <p class="article-lead">In the VEX High Stakes endgame, a robot had to climb a four-foot ladder and place a ring on the top stake. Ours reached the third rung in under 12 seconds at the World Championship while scoring the ring. By our competition count, fewer than 5% of teams completed both tasks.</p>
+    <figure class="article-hero article-hero--wide"><img src="assets/vex-worlds.jpg" alt="Our VEX robot hanging high on the ladder at the World Championship"><figcaption>Third-rung hang at Worlds, with the ring on the top stake.</figcaption></figure>
+    <section class="article-section"><h2>The mechanism</h2>
+      <p>I designed and integrated the climbing mechanism, drivetrain motor-sharing system, and odometry hardware. My teammates wrote the VEX software. The hang used active hooks to reach the next rung, passive hooks to hold the robot as the active hooks reset, and a routed climb line tensioned by a drivetrain-powered winch.</p>
+      <p>A pneumatic power take-off shifted motor power from the wheels to the winch. Passive isolation feet lifted the drive wheels off the floor for the initial climb so wheel-ground friction did not fight the winch. The winch ran at roughly 450 RPM with about 66 W available.</p>
+      <dl class="facts"><div><dt>Climb</dt><dd>Third rung in under 12 seconds</dd></div><div><dt>Power sharing</dt><dd>Drivetrain motors → pneumatic PTO → winch</dd></div><div><dt>Odometry</dt><dd>Separate tracking wheel + rotation sensor</dd></div><div><dt>My scope</dt><dd>Hang, PTO, odometry hardware, mechanical integration</dd></div></dl>
+    </section>
+    <section class="article-section"><h2>Build views</h2>
+      <div class="image-pair">
+        <figure><a href="assets/vex-mechanism.png" target="_blank" rel="noopener"><img src="assets/vex-mechanism.png" alt="Cutout view of the VEX robot above the ladder rung"></a><figcaption>The climb mechanism with its active and passive hooks above the ladder rung.</figcaption></figure>
+        <figure><a href="assets/vex-power-sharing.jpg" target="_blank" rel="noopener"><img src="assets/vex-power-sharing.jpg" alt="CAD view of the pneumatic power-sharing gearbox"></a><figcaption>CAD view of the pneumatic power-sharing gearbox.</figcaption></figure>
+      </div>
+      <figure class="single-detail"><a href="assets/vex-odometry-pod.jpg" target="_blank" rel="noopener"><img src="assets/vex-odometry-pod.jpg" alt="CAD view of an odometry tracking pod with its independent wheel"></a><figcaption>The tracking pod measured chassis motion independently of drive-wheel slip.</figcaption></figure>
+    </section>
+    <section class="article-section"><h2>Beyond one robot</h2>
+      <p>I co-founded and helped lead a robotics community that grew to more than 200 students in Katy, Texas. We founded and mentored eight high-school teams. The program won the 2025 UIL Texas State Championship and qualified for VEX Worlds seven times. I now serve as a senior advisor.</p>
+    </section>
+    <p class="article-end"><a href="portfolio.pdf">See the full technical portfolio (PDF)</a></p>
+  </main>
+  <footer class="site-footer"><span>© 2026 Dillon Mehta</span><a href="./">Back home</a></footer>
+</body>
+</html>

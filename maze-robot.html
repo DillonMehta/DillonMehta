@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dillon Mehta's maze navigation robot: C++ motion control, encoder and IMU feedback, custom electronics, and fabrication.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c54b2'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white'%3EDM%3C/text%3E%3C/svg%3E">
+  <title>Maze navigation robot · Dillon Mehta</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="site-header__inner"><a class="site-name" href="./">Dillon Mehta</a><nav aria-label="Main navigation"><a href="./#work">Work</a><a href="./#projects">Projects</a><a href="./#notes">Notes</a><a href="./#contact">Contact</a></nav></div></header>
+  <main id="main" class="page article">
+    <a class="back-link" href="./#projects">All projects</a>
+    <p class="eyebrow">Embedded software · Electronics · Fabrication</p>
+    <h1>Maze navigation robot</h1>
+    <p class="article-lead">I built a small autonomous robot for timed maze-navigation competitions. The route and target time changed by event, so the firmware had to balance completion time against drift and mechanical variation.</p>
+    <figure class="article-hero"><img src="assets/maze-robot.jpg" alt="The completed maze-navigation robot with an MIT Science Olympiad medal"><figcaption>One of three hardware iterations. The robot earned seven medals, including second at the MIT Invitational and Texas State Tournament.</figcaption></figure>
+
+    <section class="article-section"><h2>What I built</h2>
+      <p>I wrote the route parser, timing allocation, motion profiles, encoder distance and speed calculations, and motor correction logic in C++. I designed and laid out the PCB in Autodesk EAGLE, ordered it, soldered the assembly, and designed the printed shell in Fusion. I used Pololu schematics as references while developing my own board and made changes to the sensing layout.</p>
+      <p>The hardware evolved over three iterations. Balloon tread increased wheel traction, and a rear spoiler served as a counterweight. I removed the original bump sensing, added a bottom reflectance channel and a top-mounted IR sensor, and retained the inertial interface.</p>
+      <dl class="facts"><div><dt>Controller</dt><dd>ATmega32U4</dd></div><div><dt>Motion sensing</dt><dd>Wheel encoders + LSM6DS33 IMU</dd></div><div><dt>Motor drive</dt><dd>Two DRV8838 channels</dd></div><div><dt>Tools</dt><dd>C++, EAGLE, Fusion, soldering, 3D printing</dd></div></dl>
+    </section>
+
+    <section class="article-section"><h2>The motion controller</h2>
+      <p>Each straight segment accelerates for the first quarter of its allotted time, cruises for half, and decelerates for the final quarter. Encoder-derived speed adjusts both motor PWM commands. Gyro angle adds a correction to the right motor. The route scheduler reserves time for turns, then assigns the remaining time to straight segments in proportion to their distance.</p>
+      <pre class="code"><code>// From fwd(); comments and unrelated lines omitted.
+double delta_T = findTime(distance);
+double delta_T_us = delta_T * 1e6;
+
+if (elapsed_time &lt;= delta_T_us / 4) {
+  velocity_setpoint = (16.0 * distance) /
+    (3.0 * delta_T * delta_T) * (elapsed_time / 1e6);
+} else if (elapsed_time &lt;= 3 * delta_T_us / 4) {
+  velocity_setpoint = (4.0 * distance) / (3.0 * delta_T);
+} else {
+  double t_dec = elapsed_time - 3 * delta_T_us / 4;
+  velocity_setpoint = (16.0 * distance) /
+    (3.0 * delta_T * delta_T) *
+    ((delta_T / 4) - t_dec / 1e6);
+}
+
+left_pwm  += kP * (velocity_setpoint - vL());
+right_pwm += kP * (velocity_setpoint - vR())
+             - kPs * ang();
+motors.setSpeeds(left_pwm, right_pwm);</code></pre>
+      <p><a href="assets/maze-control.ino" download>Download the full competition firmware (.ino)</a>. It is the original working file, not cleaned-up sample code.</p>
+      <p>For distance, the firmware uses 12 encoder counts per motor rotation, a 29.86:1 gearbox ratio, and separately calibrated wheel circumferences. A straight segment exits when it reaches the target distance or exceeds its time allocation by 100 ms.</p>
+    </section>
+
+    <section class="article-section"><h2>Electronics</h2>
+      <p>These are readable reconstructions of the circuits I designed for my PCB. They show the motor and encoder channels, controller-to-IMU interface, power selection, and sensor changes. The original board files were lost with an older laptop, so I reconstructed the drawings from the circuit architecture and preserved details.</p>
+      <div class="circuit-grid">
+        <figure><a href="assets/maze-circuits-motor.png" target="_blank" rel="noopener"><img src="assets/maze-circuits-motor.png" alt="Motor drive and encoder circuits showing DRV8838 H-bridge, motor outputs, Hall sensors, pull-ups, XOR conditioning, and MCU nets"></a><figcaption>Motor drive and quadrature encoder conditioning. Open for full size.</figcaption></figure>
+        <figure><a href="assets/maze-circuits-sensors.png" target="_blank" rel="noopener"><img src="assets/maze-circuits-sensors.png" alt="Controller, I2C inertial interface, logic power selection, and added sensor interfaces"></a><figcaption>Controller, IMU, power, and sensor interfaces. Open for full size.</figcaption></figure>
+      </div>
+      <p>The motor and encoder drawings show one channel where the left and right channels are electrically equivalent. The added reflectance channel is symbolic where exact component values were not preserved; the top IR module details are likewise not claimed as an exact recovered schematic.</p>
+    </section>
+    <p class="article-end"><a href="portfolio.pdf">See the full technical portfolio (PDF)</a></p>
+  </main>
+  <footer class="site-footer"><span>© 2026 Dillon Mehta</span><a href="./">Back home</a></footer>
+</body>
+</html>
