@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Robot demos — Dillon Mehta</title>
+  <link rel="stylesheet" href="robot-options.css">
+</head>
+<body>
+  <main>
+    <header><h1>Robot demos</h1><a href="./">Dillon Mehta</a></header>
+    <div class="demos">
+      <section>
+        <h2>Two motors</h2>
+        <button class="stage" data-demo="motors" aria-label="Turn the maze robot card using two motors"><canvas width="1000" height="1200"></canvas></button>
+        <div class="controls"><button data-play="motors">Turn card</button><button data-reset="motors">Reset</button></div>
+      </section>
+      <section>
+        <h2>Paint and write</h2>
+        <button class="stage" data-demo="paint" aria-label="Watch one arm paint over the card and another write the description"><canvas width="1000" height="1200"></canvas></button>
+        <div class="controls"><button data-play="paint">Paint and write</button><button data-reset="paint">Reset</button></div>
+      </section>
+    </div>
+  </main>
+  <script src="cloth-turn.js" defer></script>
+  <script src="robot-options.js" defer></script>
+</body>
+</html>
