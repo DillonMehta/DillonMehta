@@ -2,10 +2,9 @@
   const feed = document.querySelector('[data-x-posts]');
   if (!feed) return;
 
-  const refreshInterval = 5 * 60 * 1000;
+  const refreshInterval = 60 * 60 * 1000;
   let nextRefresh = 0;
   let refreshing = false;
-  let failures = 0;
 
   const fallbackPosts = [
     { id: '2107885940039688633', date: 'Oct 7, 2026', text: 'wow i really doubted the power of running daily. ive never felt this locked in🔒' },
@@ -71,13 +70,11 @@
       mount.classList.remove('x-timeline-pending');
       mount.style.removeProperty('width');
       feed.replaceChildren(mount);
-      failures = 0;
       nextRefresh = Date.now() + refreshInterval;
     } catch (error) {
       console.warn('X profile timeline could not be loaded:', error.message);
       mount.remove();
-      failures += 1;
-      nextRefresh = Date.now() + Math.min(refreshInterval * 2 ** failures, 60 * 60 * 1000);
+      nextRefresh = Date.now() + refreshInterval;
     } finally {
       clearTimeout(timeout);
       feed.removeAttribute('aria-busy');
