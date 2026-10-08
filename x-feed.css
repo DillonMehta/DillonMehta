@@ -1,21 +1,6 @@
-[data-x-posts] {
-  min-width: 0;
-}
-
-[data-x-posts] .twitter-tweet {
-  box-sizing: border-box;
-  margin: 0 0 18px !important;
-  max-width: 100%;
-  padding: 17px 18px;
-  border: 1px solid #c8c8c8;
-  background: #fff;
-}
-
-[data-x-posts] .twitter-tweet p { margin: 0 0 12px; white-space: pre-line; }
-
-[data-x-posts] .twitter-tweet > a {
-  display: block;
-  color: #555;
-  font-size: 14px;
-  text-decoration: underline;
-}
+[data-x-posts]{position:relative;min-width:0}
+[data-x-posts] iframe{display:block;max-width:100%}
+.x-timeline-pending{position:absolute;left:0;top:0;opacity:0;pointer-events:none}
+[data-x-posts] .twitter-tweet{box-sizing:border-box;margin:0 0 18px!important;max-width:100%;padding:17px 18px;border:1px solid #c8c8c8;background:#fff}
+[data-x-posts] .twitter-tweet p{margin:0 0 12px;white-space:pre-line}
+[data-x-posts] .twitter-tweet>a{display:block;color:#555;font-size:14px;text-decoration:underline}
