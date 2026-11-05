@@ -15,10 +15,6 @@
     <p>Affordance learning and verification · Autonomous Systems Group · In progress</p>
     <p>I am researching how robots can learn what objects can do by interacting with them. The challenge is not just choosing an action, but deciding whether the interaction gave the robot useful evidence about the object.</p>
     <h2>Connecting functional memory to an action policy</h2>
-    <figure>
-      <a href="assets/ut-vla-architecture.png"><img src="assets/ut-vla-architecture.png" alt="Proposed interactive functional VLA architecture: visual-language backbone, affordance memory, function adapter, action expert, execution, and verification feedback"></a>
-      <figcaption>The architecture from my current research slides. This is a design under development, not a completed deployment.</figcaption>
-    </figure>
     <p>The design keeps an object’s affordance beliefs and uncertainty alongside the vision-language-action policy. An adapter connects that functional memory to the policy. When uncertainty is high, the robot can take an exploratory action, check the physical effect, and update its beliefs.</p>
     <h2>Was the test valid?</h2>
     <p>A verification record describes the target object, the affordance being tested, the probe action, the initial state, and the expected effect. The verifier evaluates validity, evidence, and confidence separately. For a push test, contact and sufficient applied force matter before any conclusion can be drawn from the object’s motion.</p>
